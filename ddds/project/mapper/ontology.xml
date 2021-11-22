@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ontology name="MapperOntology">
+
+    <action name="get_directions"/>
+    <action name="back_to_menu"/>
+
+    <sort name="city" dynamic="true"/>
+    <sort name="location_type_sort" dynamic="true"/>
+    <sort name="location_sub_type_sort" dynamic="true"/>
+    <sort name="transport_mode_sort" dynamic="true"/>
+
+    <predicate name="dep_city_pred" sort="city"/>
+    <predicate name="dest_city_pred" sort="city"/>
+    <predicate name="location_type" sort="location_type_sort"/>
+    <predicate name="location_sub_type" sort="location_sub_type_sort"/>
+    <predicate name="transport_mode" sort="transport_mode_sort"/>
+
+
+    <predicate name="get_locations" sort="string"/>
+    
+    <predicate name="get_next_direction" sort="string"/>
+
+    <predicate name="all_directions_finished_pred" sort="string"/>
+
+    <individual name="city_stockholm" sort="city"/>
+    <individual name="city_gothenburg" sort="city"/>
+    <individual name="city_copenhagen" sort="city"/>
+    <individual name="city_malmo" sort="city"/>
+
+    <individual name="walking" sort="transport_mode_sort"/>
+    <individual name="driving" sort="transport_mode_sort"/>
+    <individual name="bicycling" sort="transport_mode_sort"/>
+    <individual name="transit" sort="transport_mode_sort"/>
+
+    <individual name="chinese" sort="location_sub_type_sort"/>
+    <individual name="mexican" sort="location_sub_type_sort"/>
+    <individual name="swedish" sort="location_sub_type_sort"/>
+    <individual name="italian" sort="location_sub_type_sort"/>
+
+    <individual name="restaurant" sort="location_type_sort"/>
+    <individual name="pharmacy" sort="location_type_sort"/>
+    <individual name="dentist" sort="location_type_sort"/>
+    <individual name="shop" sort="location_type_sort"/>
+
+
+
+
+</ontology>

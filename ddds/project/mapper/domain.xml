@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<domain name="MapperDomain" is_super_domain="true">
+
+  <goal type="perform" action="top">
+    <plan>
+      <forget_all/>
+      <findout type="alt_question">
+        <alt>
+          <perform action="get_directions"/>
+        </alt>
+        <alt>
+          <resolve type="wh_question" predicate="get_locations"/>
+        </alt>
+      </findout>
+    </plan>
+  </goal>
+
+  
+  <goal type="resolve" question_type="wh_question" predicate="get_locations">
+    <plan>
+      <findout type="wh_question" predicate="dep_city_pred"/>
+      <findout type="wh_question" predicate="location_type"/>
+      <bind type="wh_question" predicate="location_sub_type"/>
+      <invoke_service_query predicate="get_locations" type="wh_question"/>
+      <forget predicate="dep_city_pred"/>
+    </plan>
+  </goal>
+
+  <goal type="perform" action="get_directions">
+    <plan>
+      <findout type="wh_question" predicate="dest_city_pred"/>
+      <findout type="wh_question" predicate="dep_city_pred"/>
+      <bind type="wh_question" predicate="transport_mode"/>
+      <findout type="alt_question">
+        <alt>
+          <resolve type="wh_question" predicate="get_next_direction"/>
+        </alt>
+        <alt>
+          <perform action="back_to_menu"/>
+        </alt>
+      </findout>
+    </plan>
+  </goal>
+
+  <goal type="resolve" question_type="wh_question" predicate="get_next_direction">
+    <plan>
+      <if>
+        <condition>
+          <proposition predicate="get_next_direction" value="End"/>
+        </condition>
+        <then>
+          <forget_all/>
+        </then>
+        <else>
+          <invoke_service_query type="wh_question" predicate="get_next_direction"/>
+        </else>
+      </if>
+    </plan>
+    <postplan>
+      <forget predicate="get_next_direction"/>
+    </postplan>
+  </goal>
+
+  <goal type="perform" action="back_to_menu">
+    <plan>
+      <forget_all/>
+    </plan>
+  </goal>
+
+
+
+
+</domain>

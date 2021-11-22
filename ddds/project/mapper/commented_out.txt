@@ -1,0 +1,273 @@
+grammar: 
+
+<!--action name="get_directions_action">
+    <one-of>
+      <item>directions</item>
+      <item>i want to go somewhere</item>
+      <item>can you give me directions</item>
+
+      <item>what are the directions to <slot predicate="dest_city_pred"/></item>
+      <item>how do i get to <slot predicate="dest_city_pred"/></item>
+      <item>tell me how to get to <slot predicate="dest_city_pred"/></item>
+      <item>directions to  <slot predicate="dest_city_pred"/></item>
+      <item>what are the directions to <slot predicate="dest_city_pred"/></item>
+      <item>how do i get to <slot predicate="dest_city_pred"/></item>
+      <item>tell me how to get to <slot predicate="dest_city_pred"/></item>
+
+      <item>what are the directions to <slot predicate="dest_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>how do i get to <slot predicate="dest_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>tell me how to get to <slot predicate="dest_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>directions to <slot predicate="dest_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>can you give me <slot predicate="transport_mode"/> directions to <slot predicate="dest_city_pred"/></item>
+
+      <item>what are the directions to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/></item>
+      <item>how do i get to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/></item>
+      <item>tell me how to get to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/></item>
+      <item>directions to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/></item>
+      <item>what are the directions to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/></item>
+      <item>how do i get to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/></item>
+      <item>tell me how to get to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/></item>
+      <item>what are the directions to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>how do i get to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>tell me how to get to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>directions to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>can you give me <slot predicate="transport_mode"/> directions to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/></item>
+
+      <item>what are the directions from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/></item>
+      <item>how do i get from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/></item>
+      <item>tell me how to get from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/></item>
+      <item>directions from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/></item>
+      <item>what are the directions from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/></item>
+      <item>how do i get from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/></item>
+      <item>tell me how to get from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/></item>
+      <item>what are the directions from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>how do i get from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>tell me how to get from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>directions from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>can you give me <slot predicate="transport_mode"/> directions from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/></item>
+    </one-of>
+  </action>
+
+  <report speaker="user" status="done" action="say_next_direction">
+    <one-of>
+      <item>done that</item>
+      <item>done</item>
+      <item>what next</item>
+      <item>what then</item>
+      <item>where now</item>
+      <item>where do i go now</item>
+      <item>after that</item>
+      <item>then</item>
+      <item>next</item>
+    </one-of>
+  </report-->
+
+  <!--report action="ArrivedAtLocation" status="ended">You have arrived at your destination.</report-->
+
+
+  <!--question speaker="all" predicate="get_directions">
+    the directions
+  </question-->
+
+
+  <report speaker="user" status="done" action="direction_completed_action">
+    <one-of>
+      <item>ok</item>
+      <item>okay</item>
+      <item>done that</item>
+      <item>done</item>
+      <item>what next</item>
+      <item>what then</item>
+      <item>where now</item>
+      <item>where do i go now</item>
+      <item>after that</item>
+      <item>then</item>
+      <item>next</item>
+    </one-of>
+  </report>
+
+
+  <answer speaker="system" predicate="get_next_direction">
+    The next direction is <slot predicate="get_next_direction"/>
+  </answer>
+
+
+
+  <question speaker="all" predicate="get_next_direction">
+    the next direction
+  </question>
+
+<question speaker="user" predicate="get_next_direction" type="wh_question">
+    <one-of>
+      <item>directions</item>
+      <item>i want to go somewhere</item>
+      <item>can you give me directions</item>
+
+      <item>what are the directions to <slot predicate="dest_city_pred"/></item>
+      <item>how do i get to <slot predicate="dest_city_pred"/></item>
+      <item>tell me how to get to <slot predicate="dest_city_pred"/></item>
+      <item>directions to  <slot predicate="dest_city_pred"/></item>
+      <item>what are the directions to <slot predicate="dest_city_pred"/></item>
+      <item>how do i get to <slot predicate="dest_city_pred"/></item>
+      <item>tell me how to get to <slot predicate="dest_city_pred"/></item>
+
+      <item>what are the directions to <slot predicate="dest_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>how do i get to <slot predicate="dest_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>tell me how to get to <slot predicate="dest_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>directions to <slot predicate="dest_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>can you give me <slot predicate="transport_mode"/> directions to <slot predicate="dest_city_pred"/></item>
+
+      <item>what are the directions to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/></item>
+      <item>how do i get to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/></item>
+      <item>tell me how to get to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/></item>
+      <item>directions to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/></item>
+      <item>what are the directions to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/></item>
+      <item>how do i get to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/></item>
+      <item>tell me how to get to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/></item>
+      <item>what are the directions to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>how do i get to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>tell me how to get to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>directions to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>can you give me <slot predicate="transport_mode"/> directions to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/></item>
+
+      <item>what are the directions from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/></item>
+      <item>how do i get from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/></item>
+      <item>tell me how to get from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/></item>
+      <item>directions from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/></item>
+      <item>what are the directions from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/></item>
+      <item>how do i get from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/></item>
+      <item>tell me how to get from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/></item>
+      <item>what are the directions from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>how do i get from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>tell me how to get from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>directions from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>can you give me <slot predicate="transport_mode"/> directions from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/></item>
+    </one-of>
+  </question>
+
+
+
+
+
+
+
+
+
+  domain
+
+
+
+    <!--goal type="perform" action="get_directions_action">
+    <plan>
+      <findout type="wh_question" predicate="dest_city_pred"/>
+      <findout type="wh_question" predicate="dep_city_pred"/>
+      <bind type="wh_question" predicate="transport_mode"/>
+      <invoke_service_query predicate="get_directions" type="wh_question"/>
+      <if>
+        <condition>
+          <proposition predicate="get_directions" value="end"/>
+        </condition>
+        <then>
+          <invoke_service_action name="ArrivedAtLocation" postconfirm="true"/>
+        </then>
+        <else>
+          <get_done action="say_next_direction"/>
+          
+        
+        </else>
+      </if>
+
+    </plan>
+  </goal-->
+
+  <!--goal type="resolve" question_type="wh_question" predicate="template">
+    <plan>
+      <findout type="wh_question" predicate="dep_city_pred"/>
+      <invoke_service_query predicate="template" type="wh_question"/>
+    </plan>
+  </goal-->
+
+
+
+
+
+      <if>
+        <condition>
+          <proposition predicate="get_directions" value="end"/>
+        </condition>
+        <then>
+          <invoke_service_action name="ArrivedAtLocation" postconfirm="true"/>
+        </then>
+        <else>
+          <get_done action="say_next_direction"/>
+        </else>
+      </if>
+
+
+
+
+      <if>
+        <condition>
+          <proposition predicate="get_directions" value="end"/>
+        </condition>
+        <then>
+          <signal_action_completion/>
+        </then>
+        <else>
+          <get_done action="direction_completed_action"/>
+        </else>
+      </if>
+      <forget predicate="get_directions"/>
+
+
+
+
+
+  ontology
+
+
+
+      <!--predicate name="get_directions" sort="string"/-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      service interface
+
+
+
+
+    <!--query name="get_directions">
+        <parameters>
+            <parameter predicate="dest_city_pred" format="grammar_entry"/>
+            <parameter predicate="dep_city_pred" format="grammar_entry"/>
+            <parameter predicate="transport_mode" format="grammar_entry" optional="true"/>
+        </parameters>
+
+        <target>
+            <http endpoint="http://http-service/get_directions"/>
+        </target>
+    </query-->
+
+
+
+
+
+
+
+
+
+
+
+

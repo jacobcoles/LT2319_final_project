@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service_interface>
+
+
+    <query name="get_locations">
+        <parameters>
+            <parameter predicate="dep_city_pred" format="grammar_entry"/>
+            <parameter predicate="location_type" format="grammar_entry"/>
+            <parameter predicate="location_sub_type" format="grammar_entry" optional="true"/>
+        </parameters>
+
+        <target>
+            <http endpoint="http://http-service/get_nearby"/>
+        </target>
+    </query>
+
+    <query name="get_next_direction">
+        <parameters>
+            <parameter predicate="dest_city_pred" format="grammar_entry"/>
+            <parameter predicate="dep_city_pred" format="grammar_entry"/>
+            <parameter predicate="transport_mode" format="grammar_entry" optional="true"/>
+        </parameters>
+
+        <target>
+            <http endpoint="http://http-service/get_directions"/>
+        </target>
+    </query>
+
+
+</service_interface>
+

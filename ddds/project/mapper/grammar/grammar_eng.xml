@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar>
+  <action name="top">
+    <one-of>
+      <item>main menu</item>
+      <item>top</item>
+      <item>beginning</item>
+      <item>cancel</item>
+      <item>forget it</item>
+      <item>never mind</item>
+      <item>abort</item>
+    </one-of>
+  </action>
+
+  <action name="up">
+    <one-of>
+      <item>up</item>
+      <item>back</item>
+      <item>go back</item>
+    </one-of>
+  </action>
+
+  
+
+  <question speaker="user" predicate="get_locations" type="wh_question">
+    <one-of>
+      <item>what is nearby</item>
+      <item>what is around</item>
+      <item>nearby</item>
+      <item>what is nearby</item>
+      <item>what is near <slot predicate="dep_city_pred"/></item>
+      <item>is there a <slot predicate="location_type"/> near <slot predicate="dep_city_pred"/></item>
+      <item>is there a <slot predicate="location_sub_type"/><slot predicate="location_type"/> near <slot predicate="dep_city_pred"/></item>
+      <item>what is a nearby <slot predicate="location_sub_type"/> <slot predicate="location_type"/></item>
+      <item>where is a <slot predicate="location_sub_type"/> <slot predicate="location_type"/></item>
+      <item>where can i find a <slot predicate="location_sub_type"/> <slot predicate="location_type"/></item>
+      <item>is there a <slot predicate="location_sub_type"/> <slot predicate="location_type"/> nearby</item>
+      <item>what is a nearby <slot predicate="location_type"/></item>
+      <item>where is the closest <slot predicate="location_type"/></item>
+      <item>where is a nearby <slot predicate="location_type"/></item>
+      <item>how can i find a <slot predicate="location_type"/></item>
+      <item>where is the nearest <slot predicate="location_sub_type"/> place</item>
+      <item>i want to eat some <slot predicate="location_sub_type"/></item>
+      <item>a <slot predicate="location_sub_type"/> <slot predicate="location_type"/></item>
+      <item>find me a <slot predicate="location_sub_type"/> <slot predicate="location_type"/></item>
+      <item>i want a <slot predicate="location_sub_type"/> <slot predicate="location_type"/></item>
+      <item>where is a <slot predicate="location_sub_type"/> <slot predicate="location_type"/></item>
+      <item>what is the nearest <slot predicate="location_sub_type"/> <slot predicate="location_type"/></item>
+      <item>where is the nearest <slot predicate="location_sub_type"/> <slot predicate="location_type"/></item>
+      <item>where is a nearby <slot predicate="location_sub_type"/> <slot predicate="location_type"/></item>
+      <item>where is a close <slot predicate="location_sub_type"/> <slot predicate="location_type"/></item>
+      <item>what is a close <slot predicate="location_sub_type"/> <slot predicate="location_type"/></item>
+      <item>what is a closeby <slot predicate="location_sub_type"/> <slot predicate="location_type"/></item>
+      <item>where is a closeby <slot predicate="location_sub_type"/> <slot predicate="location_type"/></item>
+    </one-of>
+  </question>
+
+
+  <question speaker="system" predicate="dep_city_pred" type="wh_question">
+    from which city
+  </question>
+
+  <question speaker="system" predicate="dest_city_pred" type="wh_question">
+    to which city
+  </question>
+
+  <question speaker="system" predicate="location_type" type="wh_question">
+    what are you looking for
+  </question>
+
+  <question speaker="all" predicate="location_sub_type">
+    the location sub-type
+  </question>
+
+  <question speaker="all" predicate="get_locations">
+    about what is nearby
+  </question>
+
+  <question speaker="all" predicate="transport_mode">
+    You can choose a transport mode or select the default driving
+  </question>
+
+
+  <individual name="city_stockholm">stockholm</individual>
+  <individual name="city_copenhagen">copenhagen</individual>
+  <individual name="city_gothenburg">gothenburg</individual>
+  <individual name="city_malmo">malmo</individual>
+
+  <individual name="walking">walking</individual>
+  <individual name="driving">driving</individual>
+  <individual name="bicycling">bicycling</individual>
+  <individual name="transit">transit</individual>
+
+  <individual name="chinese">chinese</individual>
+  <individual name="mexican">mexican</individual>
+  <individual name="swedish">swedish</individual>
+  <individual name="italian">italian</individual>
+
+  <individual name="restaurant">restaurant</individual>
+  <individual name="pharmacy">pharmacy</individual>
+  <individual name="dentist">dentist</individual>
+  <individual name="shop">shop</individual>
+
+
+
+
+
+
+<action name="get_directions">
+    <one-of>
+      <item>find navigation directions</item>
+      <item>directions</item>
+      <item>i want to go somewhere</item>
+      <item>can you give me directions</item>
+      <item>navigate</item>
+      <item>navigation</item>
+      <item>give me directions</item>
+      <item>navigation directions</item>
+      <item>get directions</item>
+
+      <item>what are the directions to <slot predicate="dest_city_pred"/></item>
+      <item>how do i get to <slot predicate="dest_city_pred"/></item>
+      <item>tell me how to get to <slot predicate="dest_city_pred"/></item>
+      <item>directions to  <slot predicate="dest_city_pred"/></item>
+      <item>what are the directions to <slot predicate="dest_city_pred"/></item>
+      <item>how do i get to <slot predicate="dest_city_pred"/></item>
+      <item>tell me how to get to <slot predicate="dest_city_pred"/></item>
+
+      <item>what are the directions to <slot predicate="dest_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>how do i get to <slot predicate="dest_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>tell me how to get to <slot predicate="dest_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>directions to <slot predicate="dest_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>can you give me <slot predicate="transport_mode"/> directions to <slot predicate="dest_city_pred"/></item>
+
+      <item>what are the directions to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/></item>
+      <item>how do i get to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/></item>
+      <item>tell me how to get to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/></item>
+      <item>directions to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/></item>
+      <item>what are the directions to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/></item>
+      <item>how do i get to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/></item>
+      <item>tell me how to get to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/></item>
+      <item>what are the directions to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>how do i get to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>tell me how to get to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>directions to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>can you give me <slot predicate="transport_mode"/> directions to <slot predicate="dest_city_pred"/> from <slot predicate="dep_city_pred"/></item>
+
+      <item>what are the directions from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/></item>
+      <item>how do i get from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/></item>
+      <item>tell me how to get from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/></item>
+      <item>directions from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/></item>
+      <item>what are the directions from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/></item>
+      <item>how do i get from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/></item>
+      <item>tell me how to get from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/></item>
+      <item>what are the directions from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>how do i get from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>tell me how to get from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>directions from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/> by <slot predicate="transport_mode"/></item>
+      <item>can you give me <slot predicate="transport_mode"/> directions from <slot predicate="dep_city_pred"/> to <slot predicate="dest_city_pred"/></item>
+    </one-of>
+  </action>
+
+  <question speaker="all" predicate="get_next_direction">
+    the next direction
+  </question>
+
+  <answer speaker="system" predicate="get_next_direction">
+    the next direction is: <slot predicate="get_next_direction"/>
+  </answer>
+
+  <question speaker="user" predicate="get_next_direction">
+    <one-of>
+      <item>yes</item>
+      <item>continue</item>
+      <item>please</item>
+      <item>what is the next direction</item>
+      <item>continue</item>
+      <item>go on</item>
+      <item>sure</item>
+      <item>yes please</item>
+      <item>next</item>
+    </one-of>
+  </question>
+
+  <action name="back_to_menu">
+    <one-of>
+      <item>not</item>
+      <item>no</item>
+      <item>cancel</item>
+      <item>back to the main menu</item>
+      <item>go back to main menu</item>
+      <item>go back</item>
+      <item>no thanks</item>
+    </one-of>
+  </action>
+
+
+
+
+</grammar>
